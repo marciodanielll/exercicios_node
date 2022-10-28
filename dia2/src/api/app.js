@@ -6,11 +6,12 @@ const app = express();
 app.use(express.json());
 
 const OK = 200;
+const CREATED = 201;
 
 app.post('/movies', async (req, res) => {
   const { movie, price } = req.body;
   await createMovie({ movie, price });
-  res.status(201).json({ message: 'Movie Created' });
+  res.status(CREATED).json({ message: 'Movie Created' });
 });
 
 app.get('/movies/:id', async (req, res) => {
